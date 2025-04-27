@@ -19,6 +19,10 @@ const chatInputElement = document.querySelector("#chat_message_input");
 const chatSubmitElement = document.querySelector("#chat_message_submit");
 
 // functions
+function scrollToBottom() {
+  chatLogElement.scrollTop = chatLogElement.scrollHeight;
+}
+
 function getCookie(name) {
   var cookieValue = null;
 
@@ -39,6 +43,16 @@ function getCookie(name) {
   return cookieValue;
 }
 
+function sendMessage() {
+  chatSocket.send(
+    JSON.stringify({
+      type: "message",
+      message: chatInputElement.value,
+      name: chatName,
+    })
+  );
+  chatInputElement.value = "";
+}
 async function joinChatRoom() {
   console.log("joinChatRoom");
   chatName = chatNameElement.value;
@@ -98,4 +112,9 @@ chatJoinElement.onclick = function (e) {
   chatRoomElement.classList.remove("hidden");
   joinChatRoom();
   return false;
+};
+
+chatSubmitElement.onclick = function (e) {
+  e.preventDefault();
+  sendMessage();
 };

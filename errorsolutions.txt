@@ -1,1 +1,6 @@
 I made this app to store the solutions of the errors I face for future use.
+
+its not template.library(), it is template.Library(), because as library() doesn't exist, I am trying to call entire module as function.
+
+split('') is wrong. ValueError: empty separator.
+split(' ') is right.
