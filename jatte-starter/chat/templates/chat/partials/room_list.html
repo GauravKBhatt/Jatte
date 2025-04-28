@@ -9,6 +9,8 @@
                     <b>Name:</b>{% firstof room.agent.name 'None yet...'%}<br>
                 </p>
                 <a href="{% url 'chat:room' room.uuid %}" class="mt-4 inline-block py-2 px-6 bg-emerald-800 text-black rounded-xl">Join</a>
+
+                <a href="{% url 'chat:delete_room' room.uuid %}" class="mt-4 inline-block py-2 px-6 bg-rose-800 text-black rounded-xl">Delete Room</a>
             </div>
         {% endfor%}
     </div>
